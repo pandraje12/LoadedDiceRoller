@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!--Display the Dice roll form -->
+<div class="text-center">   
+    <h1>Dice Roller</h1>
+    <p>
+        <img src="~/Images/Dice1.png" alt="Dice1" width="60px" height="60px" />
+        <img src="~/Images/Dice6.png" alt="Dice6" width="60px" height="60px" />
+    </p>
+    <form id="diceForm" action="@Url.Action("RollDice", "Home")" method="post">
+        <label>Favored face of die 1:</label>
+        <input type="number" min="1" max="6" name="favoredFace1" />
+        <label>Favored factor of die 1:</label>
+        <input type="number" min="1" max="5" name="favoredFactor1" />
+        <br />
+        <br />
+        <label>Favored face of die 2:</label>
+        <input type="number" min="1" max="6" name="favoredFace2" />
+        <label>Favored factor of die 2:</label>
+        <input type="number" min="1" max="5" name="favoredFactor2" />
+        <br />
+        <br />
+        <label>Number of rolls:</label>
+        <input type="number" min="1" name="numRolls" />
+        <br />
+        <br />
+        <input type="submit" id="rollButton" value="Roll Dice" />
+    </form>
+
+<!--Display the dice roll results-->
+    @model List<string>   
+    @if (Model == null || Model.Count == 0)
+    {
+        // Dsiplay nothing
+    }
+    else
+    {
+        <p>Results of each roll:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll #</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    string[] diceRoll = @Model[i].Split(',');
+                    string path1 = "~/Images/Dice" + diceRoll[0] + ".png"; 
+                    string path2 = "~/Images/Dice" + diceRoll[1] + ".png";
+                   
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>                           
+                            <img src="@Url.Content(path1)" width="30px" height="30px"/>
+                            <img src="@Url.Content(path2)" width="30px" height="30px" />                            
+                         </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>        
+    }
+</div>

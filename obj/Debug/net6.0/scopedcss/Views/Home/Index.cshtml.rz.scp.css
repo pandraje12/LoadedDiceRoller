@@ -1,0 +1,31 @@
+/* Style the form elements */
+#diceForm label[b-4tkou59tex] {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+#diceForm input[b-4tkou59tex] {
+    font-size: 18px;
+    padding: 5px;
+    width: 50px;
+}
+
+    
+/* Style the roll button */
+#rollButton[b-4tkou59tex] {
+    width: 100px !important;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+}
+    
+/* Style the roll button when hovering over it */
+    #rollButton:hover[b-4tkou59tex] {
+        background-color: #eeeeee;
+    }
+
+/*Table Styel*/
+table[b-4tkou59tex], th[b-4tkou59tex], td[b-4tkou59tex] {
+    border: 1px solid;
+}
+
